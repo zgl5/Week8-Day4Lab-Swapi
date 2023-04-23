@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+//Import route and our components
+import { Route, Routes } from "react-router-dom";
+import Main from "./services/Main";
+import StarShipCard from "./components/StarShipCard";
+import Planets from "./services/Planet";
+import People from "./services/People";
+import {useState, useEffect} from "react";
 
-function App() {
+export default function App () {
+  const [people, setPeople] = useState([]);
+  const [planets, setPlanets] = useState([]);
+  
+  useEffect (() =>{
+   
+    async function fetchPeople(){
+    let res = await fetch ("https://swapi.dev/api/people/?format=json");
+    let data = await res.json();
+    setPeople(data.results);
+    }
+  
+    async function fetchPlanet(){
+      let res = await fetch ("https://swapi.dev/api/planets/?format=json");
+      let data = await res.json();
+      setPlanets(data.results);
+      }
+       
+  fetchPeople()
+  fetchPlanet()
+  
+  }, []);
+
+
+  // We will use the Route component to specify each route
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <StarShipCard/>
+    
+      <Routes>
+      <Route path="/" element={<Main/>}/>
+      <Route path="/Planet" element={<Planets data={planets}/>}/>
+      <Route path="/People" element={<People data={people}/>}/>
+      </Routes>
     </div>
   );
 }
 
-export default App;
