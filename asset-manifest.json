@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Week8-Day4Lab-Swapi/static/css/main.7d92ad19.css",
+    "main.js": "/Week8-Day4Lab-Swapi/static/js/main.a0c84ebf.js",
+    "index.html": "/Week8-Day4Lab-Swapi/index.html",
+    "main.7d92ad19.css.map": "/Week8-Day4Lab-Swapi/static/css/main.7d92ad19.css.map",
+    "main.a0c84ebf.js.map": "/Week8-Day4Lab-Swapi/static/js/main.a0c84ebf.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7d92ad19.css",
+    "static/js/main.a0c84ebf.js"
+  ]
+}
